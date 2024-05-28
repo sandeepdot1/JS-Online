@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding DOM 2</title>
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(name) {
+        const newLi = document.createElement('li')
+        newLi.innerHTML = `${name}`
+        const langclass = document.querySelector(".language")
+        langclass.appendChild(newLi)
+    }
+    addLanguage("Python")
+    addLanguage("Golang")
+
+    function addLanguageOpt(name) {
+        const newLi = document.createElement('li')
+        newLi.appendChild(document.createTextNode(`${name}`))
+        document.querySelector(".language").appendChild(newLi)
+    }
+    addLanguageOpt("C++")
+
+    // edit
+    const secondLang = document.querySelector("li:nth-child(2)")
+    const newLi = document.createElement('li')
+    newLi.textContent = "Java"
+    secondLang.replaceWith(newLi)
+
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
