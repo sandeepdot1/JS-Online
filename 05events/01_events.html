@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events in JS</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <h1>Welcome Sandeep</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const printMe = function () {
+      console.log("Hi", Date.now());
+    };
+    const changeBgColor = function () {
+      const red = getRandomInt(0, 255);
+      const green = getRandomInt(0, 255);
+      const blue = getRandomInt(0, 255);
+      const alpha = Math.random().toFixed(2); // Random alpha between 0 and 1 with 2 decimal places
+
+      const rgbaColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+      document.querySelector("body").style.backgroundColor = rgbaColor;
+      console.log(`Bg color: ${rgbaColor}`)
+    };
+    // const triggerStart = setInterval(printMe, 2000)
+    let intervalId;
+
+    document.querySelector("#start").addEventListener("click", function () {
+      intervalId = setInterval(changeBgColor, 2000);
+      console.log("Start triggered");
+    });
+    document.querySelector("#stop").addEventListener("click", function () {
+      // document.querySelector('body').style.backgroundColor = 'black'
+      clearInterval(intervalId);
+      console.log("Stop triggered");
+    });
+  </script>
+</html>
